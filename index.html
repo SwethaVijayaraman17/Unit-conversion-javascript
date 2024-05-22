@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(3, 40, 110);
+            margin-top: 3%;
+        }
+
+        form {
+            width: 40%;
+            /* border: 1px solid red; */
+            background-color: rgba(111, 160, 127, 0.795);
+            padding: 40px;
+            border-radius: 10px;
+            margin: auto;
+            /* height: fit-content; */
+        }
+
+        select {
+            margin: 20px 0px;
+            background-color: white;
+            width: 41%;
+            border: 1px solid rgba(0, 0, 0, 0.267);
+            padding: 5px;
+            height: 40px;
+            font-size: 0.9em;
+            /* display: block; */
+            border-radius: 5px;
+        }
+
+        label {
+            color: rgb(6, 54, 94);
+        }
+
+        input {
+            margin: 15px 0px;
+            background-color: white;
+            width: 100% !important;
+            border: 1px solid rgba(0, 0, 0, 0.267);
+            font-size: 0.9em;
+            height: 30px;
+            /* display: block; */
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        div {
+            display: inline-block;
+            width: 13%;
+        }
+
+        button {
+            background-color: rgba(12, 17, 92, 0.589);
+            padding: 10px 30px;
+            font-size: 1em;
+            border: none;
+            border-radius: 10px;
+            /* display: block; */
+            cursor: pointer;
+            color: white;
+            /* margin: auto; */
+            margin: 4% 0px;
+            /* float: right; */
+        }
+
+        hr {
+            color: rgba(255, 255, 255, 0.438);
+            margin-bottom: 15px;
+        }
+
+        #reset {
+            background-color: rgba(6, 99, 102, 0.747);
+        }
+
+        textarea {
+            margin: 4% 0px;
+            background-color: white;
+            width: 98%;
+            border: 1px solid rgba(0, 0, 0, 0.267);
+            font-size: 0.9em;
+            height: 65px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<script>
+    function UnitCalculation() {
+        var from_unit = document.getElementById('from_unit').value
+        var to_unit = document.getElementById('to_unit').value
+        var unit = document.getElementById('unit').value
+
+        if (from_unit === 'Kilometer' && to_unit === 'Millimeter') {
+            document.getElementById('result').value = `${Number(unit) * 1000000} mm`
+            document.getElementById('calculation').value = `${unit} * 1000000 = ${Number(unit) * 1000000} mm`
+
+        }
+        if (from_unit === 'Centimeter' && to_unit === 'Millimeter') {
+            document.getElementById('result').value = `${Number(unit) * 10} mm`
+            document.getElementById('calculation').value = `${unit} * 10 = ${Number(unit) * 10} mm`
+            document.getElementById('calculation').value = `${unit} * 10 = ${Number(unit) * 10} mm`
+        }
+        if (from_unit === 'Meter' && to_unit === 'Millimeter') {
+            document.getElementById('result').value = `${Number(unit) * 1000} mm`
+            document.getElementById('calculation').value = `${unit} * 1000 = ${Number(unit) * 1000} mm`
+        }
+        if (from_unit === 'Meter' && to_unit === 'Kilometer') {
+            document.getElementById('result').value = `${Number(unit) / 1000} km`
+            document.getElementById('calculation').value = `${unit} / 1000 = ${Number(unit) / 1000} km`
+        }
+        if (from_unit === 'Centimeter' && to_unit === 'Kilometer') {
+            document.getElementById('result').value = `${Number(unit) / 100000} km`
+            document.getElementById('calculation').value = `${unit} / 100000 = ${Number(unit) / 100000} km`
+        }
+        if (from_unit === 'Millimeter' && to_unit === 'Kilometer') {
+            document.getElementById('result').value = `${Number(unit) / 1000000} km`
+            document.getElementById('calculation').value = `${unit}  / 1000000 = ${Number(unit) / 1000000} km`
+        }
+        if (from_unit === 'Millimeter' && to_unit === 'Meter') {
+            document.getElementById('result').value = `${Number(unit) / 1000} m`
+            document.getElementById('calculation').value = `${unit} / 1000 = ${Number(unit) / 1000} m`
+        }
+        if (from_unit === 'Centimeter' && to_unit === 'Meter') {
+            document.getElementById('result').value = `${Number(unit) / 100} m`
+            document.getElementById('calculation').value = `${unit} / 100 = ${Number(unit) / 100} m`
+        }
+        if (from_unit === 'Kilometer' && to_unit === 'Meter') {
+            document.getElementById('result').value = `${Number(unit) * 1000} m`
+            document.getElementById('calculation').value = `${unit} * 1000 = ${Number(unit) * 1000} m`
+        }
+
+    }
+
+    function Reset_fn() {
+        document.getElementById('from_unit').value = 'Select Unit'
+        document.getElementById('to_unit').value = 'Select Unit'
+        document.getElementById('unit').value = ''
+        document.getElementById('result').value = ''
+        document.getElementById('calculation').value = ''
+    }
+</script>
+
+<body>
+    <h1>Unit Converter</h1>
+    <form id="form">
+
+        <label>From :</label>
+        <select id="from_unit">
+            <option>Select Unit</option>
+            <option>Centimeter</option>
+            <option>Meter</option>
+            <option>Millimeter</option>
+            <option>Kilometer</option>
+        </select>
+
+
+        <label>To :</label>
+        <select id="to_unit">
+            <option>Select Unit</option>
+            <option>Meter</option>
+            <option>Millimeter</option>
+            <option>Kilometer</option>
+        </select>
+        <hr />
+
+        <label>Enter the unit</label>
+        <input placeholder="Enter the unit" id="unit" />
+        <hr />
+
+        <label>Result</label>
+
+        <input placeholder="Result" id="result" />
+        <hr />
+        <label>Calculation</label>
+        <textarea id="calculation"></textarea><br />
+
+        <button onclick="UnitCalculation()" type="button">Calculate</button>
+        <button onclick="Reset_fn()" id="reset" type="button">Reset</button>
+
+    </form>
+</body>
+
+</html>
+	
